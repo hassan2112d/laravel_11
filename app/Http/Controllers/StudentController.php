@@ -21,8 +21,13 @@ class StudentController extends Controller
 
         //Raw method come in the end of the methods which we have heard and difference between normal and raw
         //method is that raw method does not need single inverted comma again again it can be come singlely and example is under.
-        $students = DB::table('students')->selectRaw('name,age,email')->get();
+        $students =DB::table('students')->selectRaw('name,age,email')->get();
 
         return $students;
+    }
+
+    public function addusers(Request $req){
+
+        return $req->all();
     }
 }
