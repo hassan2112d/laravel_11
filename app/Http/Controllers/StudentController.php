@@ -28,6 +28,15 @@ class StudentController extends Controller
 
     public function addusers(Request $req){
 
-        return $req->all();
+        $req->validate([
+
+            'username' => 'required',
+            'useremail' => 'required|email',
+            'age' => 'required|numeric',
+            'phone' => 'required|numeric',
+            'password' => 'required'
+        ]);
+
+        return $req;
     }
 }
