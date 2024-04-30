@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,17 +27,19 @@ class StudentController extends Controller
         return $students;
     }
 
-    public function addusers(Request $req){
+    public function addusers(UserRequest $req){
 
         $req->validate([
 
-            'username' => 'required',
-            'useremail' => 'required|email',
-            'age' => 'required|numeric',
-            'phone' => 'required|numeric',
-            'password' => 'required'
+            // 'username' => 'required',
+            // 'useremail' => 'required|email',
+            // 'age' => 'required|numeric',
+            // 'phone' => 'required|numeric',
+            // 'password' => 'required'
+
+
         ]);
 
-        return $req;
+        return $req->all();
     }
 }
