@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Rules\Uppercase;
 
 class StudentController extends Controller
 {
@@ -27,19 +28,19 @@ class StudentController extends Controller
         return $students;
     }
 
-    public function addusers(UserRequest $req){
+    public function addusers(Request $req){
 
         $req->validate([
 
-            // 'username' => 'required',
-            // 'useremail' => 'required|email',
-            // 'age' => 'required|numeric',
-            // 'phone' => 'required|numeric',
-            // 'password' => 'required'
+            'username' => ['required',new Uppercase],
+            'useremail' => 'required|email',
+            'age' => 'required|numeric',
+            'phone' => 'required|numeric',
+            'password' => 'required'
 
 
         ]);
 
-        return $req->all();
+        dd($req);
     }
 }
